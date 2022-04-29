@@ -40,6 +40,8 @@ function cardsCreator(movies) {
     movieUl.appendChild(linkTrailer);
     movieUl.appendChild(deleteMovieBtn);
     movieCards.appendChild(movieCard);
+    //scrollreveal library app
+    ScrollReveal().reveal(".movieCard");
   });
 }
 //cardsCleaner
@@ -55,11 +57,11 @@ function handlerUserForm(e) {
   let movieCards = document.getElementById("movieCards");
   const films = JSON.parse(localStorage.getItem(userName));
 
-  if (films == null) {
-    movieCards.innerHTML = "<h1>it looks empty here, try adding a movie</h1>";
-  } else {
-    cardsCreator(films);
-  }
+  films == null
+    ? (movieCards.innerHTML =
+        '<h1 class="text-light">it looks empty here, try adding a movie</h1>')
+    : cardsCreator(films);
+
   welcomeUser();
   e.target.reset();
 }
@@ -67,7 +69,7 @@ function handlerUserForm(e) {
 function welcomeUser() {
   const welcomeBanner = document.getElementById("welcomeBanner");
 
-  welcomeBanner.innerHTML = `<h2>hello, ${userName}</h2>
+  welcomeBanner.innerHTML = `<h2 class="text-light">hello, ${userName}</h2>
     <form id="movieForm" class="md-form mb-5">
       <input type="text" id="tittle" placeholder="tittle" class="form-control validate">
       <input type="number" id="rate" placeholder="rate" class="form-control validate">
@@ -78,7 +80,7 @@ function welcomeUser() {
 
   document.getElementById("movieForm").addEventListener("submit", addMovie);
 }
-//add a movie
+//add & delete movie
 function addMovie(e) {
   e.preventDefault();
   const tittle = document.getElementById("tittle").value;
