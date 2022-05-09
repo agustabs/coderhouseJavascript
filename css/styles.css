@@ -14,3 +14,7 @@ body{
 .movieCard{
     width: 18rem;
 }
+/* opacity captions */
+.carousel-caption{
+    opacity: 0.5;
+}
