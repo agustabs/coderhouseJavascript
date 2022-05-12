@@ -20,11 +20,12 @@ function cardsCreator(movies) {
     movieRate.textContent = movie.rate;
     movieRate.classList.add("list-group-item", "fw-bold");
 
-    const linkTrailer = document.createElement("a");
+    const linkTrailer = document.createElement("button");
     linkTrailer.textContent = "see the trailer";
-    linkTrailer.setAttribute("href", movie.trailer);
-    linkTrailer.setAttribute("target", "_blank");
     linkTrailer.classList.add("btn", "btn-warning");
+    linkTrailer.addEventListener("click", () => {
+      getUrl(movie.tittle + "trailer");
+    });
 
     const deleteMovieBtn = document.createElement("a");
     deleteMovieBtn.textContent = "delete movie";

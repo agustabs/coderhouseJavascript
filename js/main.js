@@ -1,10 +1,9 @@
 //constructor
 class movies {
-  constructor(tittle, rate, gender, trailer) {
+  constructor(tittle, rate, gender) {
     this.tittle = tittle.toLowerCase();
     this.rate = parseFloat(rate);
     this.gender = gender.toLowerCase();
-    this.trailer = trailer;
   }
 }
 let userName = document
@@ -36,7 +35,6 @@ function welcomeUser() {
       <input type="text" id="tittle" placeholder="tittle" class="p-2 m-2 form-control validate" required>
       <input type="number" id="rate" placeholder="rate" class="p-2 m-2 form-control validate">
       <input type="text" id="gender" placeholder="gender" class="p-2 m-2 form-control validate">
-      <input type="text" id="trailer" placeholder="trailer's url" class="p-2 m-2 form-control validate" required>
       <button type="submit" class="p-2 m-2 btn btn-warning">add movie</button>
     </form>`;
 
@@ -48,9 +46,8 @@ function addMovie(e) {
   const tittle = document.getElementById("tittle").value;
   const rate = document.getElementById("rate").value;
   const gender = document.getElementById("gender").value;
-  const trailer = document.getElementById("trailer").value;
 
-  const movie = new movies(tittle, rate, gender, trailer);
+  const movie = new movies(tittle, rate, gender);
 
   const moviesOnLocalStorage = JSON.parse(localStorage.getItem(userName));
   if (moviesOnLocalStorage == null) {
